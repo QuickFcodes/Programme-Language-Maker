@@ -1,0 +1,21 @@
+// OwlLang — test chain access
+class Block {
+  fn init(index) { this.index = index; }
+}
+
+class Blockchain {
+  fn init() {
+    let g = new Block(0);
+    this.chain = [g];
+  }
+
+  fn addBlock() {
+    let n = len(this.chain);
+    print n;
+    let prev = this.chain[n - 1];
+    print prev.index;
+  }
+}
+
+let bc = new Blockchain();
+bc.addBlock();

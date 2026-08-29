@@ -1,0 +1,13 @@
+// OwlLang — test field access
+class Block {
+  fn init(index, data, prevHash) {
+    this.index = index;
+    this.data = data;
+    this.prevHash = prevHash;
+  }
+}
+
+let b = new Block(0, "Genesis", "0");
+print b.index;
+print b.data;
+print b.prevHash;

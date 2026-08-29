@@ -1,0 +1,33 @@
+// OwlLang — test addBlock with hash
+class Block {
+  fn init(index, data, prevHash) {
+    this.index = index;
+    this.data = data;
+    this.prevHash = prevHash;
+    this.hash = this.computeHash();
+  }
+
+  fn computeHash() {
+    let h = this.index * 31;
+    h = h + len(this.data);
+    h = h + len(this.prevHash);
+    return h;
+  }
+}
+
+class Blockchain {
+  fn init() {
+    let genesis = new Block(0, "Genesis", "0");
+    this.chain = [genesis];
+  }
+
+  fn addBlock(data) {
+    let prev = this.chain[len(this.chain) - 1];
+    print prev.hash;
+    let block = new Block(prev.index + 1, data, prev.hash);
+    this.chain = this.chain + [block];
+  }
+}
+
+let bc = new Blockchain();
+bc.addBlock("Tx1");

@@ -1,0 +1,12 @@
+{
+  "name": "plm-cli",
+  "version": "1.0.0",
+  "description": "PLM — Programming Language Maker (CLI Edition)",
+  "scripts": {
+    "plm": "bun cli/plm.ts",
+    "test": "bun scripts/test-all.ts"
+  },
+  "devDependencies": {
+    "bun-types": "^1.3.4"
+  }
+}

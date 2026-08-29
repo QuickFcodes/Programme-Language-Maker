@@ -1,0 +1,19 @@
+// OwlLang — Classes and objects
+class Animal {
+  fn init(name) {
+    this.name = name;
+  }
+  fn speak() {
+    print this.name;
+  }
+}
+
+let a = new Animal("Rex");
+a.speak();
+
+// Using std.math functions
+let n = 0 - 42;
+let r = abs(n);
+print r;
+let m = max(3, 7);
+print m;

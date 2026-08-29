@@ -1,0 +1,82 @@
+// OwlLang — Blockchain Simulator
+// A complex program demonstrating classes, lists, loops, conditionals.
+
+class Block {
+  fn init(index, data, prevHash) {
+    this.index = index;
+    this.data = data;
+    this.prevHash = prevHash;
+    this.hash = this.computeHash();
+  }
+
+  fn computeHash() {
+    // Simple hash: index * 31 + data length + prevHash
+    let h = this.index * 31;
+    h = h + this.index;
+    h = h + this.prevHash;
+    return h;
+  }
+
+  fn display() {
+    print "Block #";
+    print this.index;
+    print "  Data: ";
+    print this.data;
+    print "  Hash: ";
+    print this.hash;
+    print "  Prev: ";
+    print this.prevHash;
+  }
+}
+
+class Blockchain {
+  fn init() {
+    let genesis = new Block(0, "Genesis", 0);
+    this.chain = [genesis];
+  }
+
+  fn getLatestBlock() {
+    let n = len(this.chain);
+    return this.chain[n - 1];
+  }
+
+  fn addBlock(data) {
+    let prev = this.getLatestBlock();
+    let newIndex = prev.index + 1;
+    let block = new Block(newIndex, data, prev.hash);
+    this.chain = this.chain + [block];
+  }
+
+  fn display() {
+    print "=== Blockchain ===";
+    for (b in this.chain) {
+      b.display();
+    }
+    print "=== End ===";
+  }
+
+  fn isValid() {
+    let i = 1;
+    while (i < len(this.chain)) {
+      let curr = this.chain[i];
+      let prev = this.chain[i - 1];
+      if (curr.prevHash != prev.hash) {
+        return false;
+      }
+      i = i + 1;
+    }
+    return true;
+  }
+}
+
+// Main
+let bc = new Blockchain();
+bc.addBlock("Transaction 1");
+bc.addBlock("Transaction 2");
+bc.addBlock("Transaction 3");
+
+bc.display();
+
+print "";
+print "Chain valid: ";
+print bc.isValid();
