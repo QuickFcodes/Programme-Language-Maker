@@ -1,0 +1,12 @@
+// OwlLang test — classes and methods
+class Animal {
+  fn init(name) {
+    this.name = name;
+  }
+  fn speak() {
+    print this.name;
+  }
+}
+
+let a = new Animal("Rex");
+a.speak();

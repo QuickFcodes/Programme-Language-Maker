@@ -1,0 +1,18 @@
+// OwlLang — test computeHash alone
+class Block {
+  fn init(index, data, prevHash) {
+    this.index = index;
+    this.data = data;
+    this.prevHash = prevHash;
+  }
+
+  fn computeHash() {
+    let h = this.index * 31;
+    h = h + len(this.data);
+    h = h + len(this.prevHash);
+    return h;
+  }
+}
+
+let b = new Block(0, "Genesis", "0");
+print b.computeHash();

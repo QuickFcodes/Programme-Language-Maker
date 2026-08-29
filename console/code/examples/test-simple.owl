@@ -1,0 +1,15 @@
+// OwlLang — simplified blockchain test
+class Block {
+  fn init(index, data) {
+    this.index = index;
+    this.data = data;
+  }
+
+  fn display() {
+    print this.index;
+    print this.data;
+  }
+}
+
+let b = new Block(1, "hello");
+b.display();

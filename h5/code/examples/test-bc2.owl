@@ -1,0 +1,31 @@
+// OwlLang — test addBlock
+class Block {
+  fn init(index, data) {
+    this.index = index;
+    this.data = data;
+  }
+}
+
+class Blockchain {
+  fn init() {
+    let genesis = new Block(0, "Genesis");
+    this.chain = [genesis];
+  }
+
+  fn getLatest() {
+    let n = len(this.chain);
+    return this.chain[n - 1];
+  }
+
+  fn addBlock(data) {
+    let prev = this.getLatest();
+    let newIndex = prev.index + 1;
+    let block = new Block(newIndex, data);
+    this.chain = this.chain + [block];
+  }
+}
+
+let bc = new Blockchain();
+bc.addBlock("Tx1");
+bc.addBlock("Tx2");
+print len(bc.chain);

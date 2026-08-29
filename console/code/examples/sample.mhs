@@ -1,0 +1,8 @@
+-- MiniHaskell — lambda and case
+print ((\x -> x + 1) 41)
+
+print (let x = 10 in let y = 20 in x + y)
+
+print (case [1, 2, 3] of
+  [] -> 0;
+  (x:xs) -> x;)
